@@ -15,6 +15,7 @@ fn main() {
     }).to_string())).unwrap();
 
     let timestamp = SystemTime::now().duration_since(UNIX_EPOCH).unwrap();
+    println!("{:?}", timestamp.as_micros());
     println!("{:?}", timestamp.as_millis());
 
     let message = socket.read_message().unwrap();
