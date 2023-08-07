@@ -11,7 +11,7 @@ fn main() {
     ).expect("Can't connect");
 
     
-    for i in 0..100 {
+    for i in 0..1000 {
 
         socket.write_message(Message::Text(json!({
             "id": 123,
@@ -34,6 +34,6 @@ fn main() {
     for i in pings {
         sum += i;
     }
-    println!("{}", sum / 100);
+    println!("{}", sum / 1000);
 
 }
