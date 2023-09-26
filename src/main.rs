@@ -11,18 +11,17 @@ fn main() {
     ).expect("Can't connect");
 
     
-    for i in 0..200 {
-
+    for _i in 0..200 {
+        let timestamp = SystemTime::now().duration_since(UNIX_EPOCH).unwrap();
         socket.write_message(Message::Text(json!({
             "id": 123,
             "method": "time"
         }).to_string())).unwrap();
-
-        let timestamp = SystemTime::now().duration_since(UNIX_EPOCH).unwrap();
+        
         // println!("{:?}", timestamp.as_micros());
         // println!("{:?}", timestamp.as_millis());
 
-        let message = socket.read_message().unwrap();
+        let _message = socket.read_message().unwrap();
         let timestamp_new = SystemTime::now().duration_since(UNIX_EPOCH).unwrap();
         // println!("{:?}", timestamp_new.as_micros());
         pings.push(timestamp_new.as_micros() - timestamp.as_micros());
